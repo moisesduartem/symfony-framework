@@ -19,10 +19,11 @@ class CourseController extends AbstractController
     public function index()
     {
         $courses = $this->getDoctrine()->getRepository(Course::class)->findAll();
-
-        return $this->json([
-            'data' => $courses
-        ]);
+        
+        if($courses != null)
+            return $this->json(['data' => $courses]);
+        else 
+            return $this->json(['data' => 'Não existem cursos a serem listados']);
     }
 
     /**
@@ -42,6 +43,8 @@ class CourseController extends AbstractController
     public function create(Request $request)
     {
         $data = $request->request->all();
+        $doctrine = $this->getDoctrine();
+        $manager = $doctrine->getManager();
 
         $course = new Course();
         $course->setName($data['name']);
@@ -50,10 +53,8 @@ class CourseController extends AbstractController
         $course->setCreatedAt(new \DateTime('now', new \DateTimeZone('America/Sao_Paulo')));
         $course->setUpdatedAt(new \DateTime('now', new \DateTimeZone('America/Sao_Paulo')));
 
-        $doctrine = $this->getDoctrine()->getManager();
-
-        $doctrine->persist($course);
-        $doctrine->flush();
+        $manager->persist($course);
+        $manager->flush();
 
         return $this->json([
             'data' => 'Curso criado com sucesso!'
@@ -65,8 +66,8 @@ class CourseController extends AbstractController
     public function update($courseId, Request $request)
     {
         $data = $request->request->all();
-
         $doctrine = $this->getDoctrine();
+        $manager = $doctrine->getManager();
 
         $course = $this->getDoctrine()->getRepository(Course::class)->find($courseId);
 
@@ -80,7 +81,6 @@ class CourseController extends AbstractController
         $course->setCreatedAt(new \DateTime('now', new \DateTimeZone('America/Sao_Paulo')));
         $course->setUpdatedAt(new \DateTime('now', new \DateTimeZone('America/Sao_Paulo')));
         
-        $manager = $doctrine->getManager();
         $manager->flush();
 
         return $this->json([
@@ -97,6 +97,13 @@ class CourseController extends AbstractController
         $course = $doctrine->getRepository(Course::class)->find($courseId);
         $manager = $doctrine->getManager();
 
+        $manager->remove($course);
+
+        $manager->flush();
+
+        return $this->json([
+            'data' => 'Curso Removido com sucesso!'
+        ]);
     }
 
 }

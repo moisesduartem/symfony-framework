@@ -25,3 +25,19 @@ updatedAt
 
 # Executando migration
 > `$ php bin/console doctrine:migrations:migrate`
+
+# Criando Controller
+> `$ php bin/console make:controller` 
+
+CourseController
+
+# Configurando Rotas
+Fora do Controller:
+>/**
+> *@Route("/courses", name="course")
+> */
+
+Fora do Controller:
+>/**
+> *@Route("/", name="index")
+> */

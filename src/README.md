@@ -1,11 +1,11 @@
 # Criando projeto
-> composer create-project symfony/skeleton [nome-do-projeto]
+> `composer create-project symfony/skeleton [nome-do-projeto]`
 
 # Instalando maker
-> composer require maker
+> `composer require maker`
 
 # Instalando ORM
-> composer require orm
+> `composer require orm`
 
 # Criando entidade
 > `$ php bin/console make:entity`

@@ -22,3 +22,6 @@ updatedAt
 
 # Criando migration
 > `$ php bin/console make:migration`
+
+# Executando migration
+> `$ php bin/console doctrine:migrations:migrate`

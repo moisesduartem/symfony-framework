@@ -4,9 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Course;
 
 /**
- * @Route("/courses", name="course")
+ * @Route("/courses", name="course_")
  */
 
 class CourseController extends AbstractController
@@ -16,9 +17,10 @@ class CourseController extends AbstractController
      */
     public function index()
     {
+        $courses = $this->getDoctrine()->getRepository(Course::class);
+
         return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/CourseController.php',
+            'data' => $courses
         ]);
     }
 }

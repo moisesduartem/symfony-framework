@@ -34,10 +34,17 @@ CourseController
 # Configurando Rotas
 Fora do Controller:
 >/**
-> *@Route("/courses", name="course")
+> *@Route("/courses", name="course_")
 > */
 
 Fora do Controller:
 >/**
 > *@Route("/", name="index")
 > */
+
+# Configurando endpoint /courses
+
+> `$courses = $this->getDoctrine()->getRepository(Course::class);`
+> `return $this->json([
+           'data' => $courses
+       ]);`

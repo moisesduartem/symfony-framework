@@ -60,3 +60,9 @@ Então, vamos criar a entidade Product e relacioná-la com Category.
 > New property name (press <return> to stop adding fields):
 >
 > (press enter again to finish)
+
+3. Excutando as migrations:
+
+> php bin/console doctrine:migrations:diff
+
+> php bin/console doctrine:migrations:migrate

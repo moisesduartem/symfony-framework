@@ -54,3 +54,6 @@ Fora do Controller:
 `@Route("/", name="create", methods={"POST"})`
 `@Route("/{courseId}", name="update", methods={"PUT", "PATCH"})`
 `@Route("/{courseId}", name="delete", methods={"DELETE})`
+
+# Checando rotas existentes 
+`php bin/console debug:route`

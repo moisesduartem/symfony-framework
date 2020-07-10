@@ -50,10 +50,19 @@ Fora do Controller:
        ]);`
 
 # Configurando métodos da rota
-`@Route("/", name="index", methods={"GET"})`
-`@Route("/", name="create", methods={"POST"})`
-`@Route("/{courseId}", name="update", methods={"PUT", "PATCH"})`
-`@Route("/{courseId}", name="delete", methods={"DELETE})`
+>`@Route("/", name="index", methods={"GET"})`
+>`@Route("/", name="create", methods={"POST"})`
+>`@Route("/{courseId}", name="update", methods={"PUT", "PATCH"})`
+>`@Route("/{courseId}", name="delete", methods={"DELETE})`
 
 # Checando rotas existentes 
-`php bin/console debug:route`
+>`php bin/console debug:route`
+
+# CRUD - Create
+> `use Symfony\Component\HttpFoundation\Request;`
+
+> `public function create(Request $request)`
+> {
+> `$data = $request->$request->all();`
+        `return $this->json($data);`
+> }

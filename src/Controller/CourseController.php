@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Course;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @Route("/courses", name="course_")
@@ -34,9 +35,10 @@ class CourseController extends AbstractController
     /**
      * @Route("/", name="create", methods={"POST"})
      */
-    public function create()
+    public function create(Request $request)
     {
-
+        $data = $request->request->all();
+        return $this->json($data);
     }
     /**
      * @Route("/{courseId}", name="update", methods={"PUT", "PATCH"})

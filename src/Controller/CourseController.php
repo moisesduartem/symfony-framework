@@ -62,8 +62,30 @@ class CourseController extends AbstractController
     /**
      * @Route("/{courseId}", name="update", methods={"PUT", "PATCH"})
      */
-    public function update($courseId)
+    public function update($courseId, Request $request)
     {
+        $data = $request->request->all();
+
+        $doctrine = $this->getDoctrine();
+
+        $course = $this->getDoctrine()->getRepository(Course::class)->find($courseId);
+
+        if($request->request->has('name'))
+            $course->setName($data['name']);
+        if($request->request->has('description'))
+            $course->setDescription($data['description']);
+        if($request->request->has('slug'))
+            $course->setSlug($data['slug']);
+
+        $course->setCreatedAt(new \DateTime('now', new \DateTimeZone('America/Sao_Paulo')));
+        $course->setUpdatedAt(new \DateTime('now', new \DateTimeZone('America/Sao_Paulo')));
+        
+        $manager = $doctrine->getManager();
+        $manager->flush();
+
+        return $this->json([
+            'data' => 'Curso atualizado com sucesso!'
+        ]); 
 
     }
     /**

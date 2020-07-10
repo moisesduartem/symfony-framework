@@ -1,0 +1,18 @@
+# Criando projeto
+> composer create-project symfony/skeleton [nome-do-projeto]
+
+# Instalando maker
+> composer require maker
+
+# Instalando ORM
+> composer require orm
+
+# Criando entidade
+> `$ php bin/console make:entity`
+
+Properties:
+name
+description
+slug
+createdAt
+updatedAt

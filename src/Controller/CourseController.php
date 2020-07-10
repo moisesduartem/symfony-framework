@@ -27,28 +27,28 @@ class CourseController extends AbstractController
     /**
      * @Route("/{courseId}", name="show", methods={"GET"})
      */
-    public function show($courseId) :void
+    public function show($courseId)
     {
 
     }
     /**
      * @Route("/", name="create", methods={"POST"})
      */
-    public function create() :void
+    public function create()
     {
 
     }
     /**
      * @Route("/{courseId}", name="update", methods={"PUT", "PATCH"})
      */
-    public function update($courseId) :void
+    public function update($courseId)
     {
 
     }
     /**
-     * @Route("/{courseId}", name="delete", methods={"DELETE})
+     * @Route("/{courseId}", name="delete", methods={"DELETE"})
      */
-    public function delete($courseId) :void
+    public function delete($courseId)
     {
 
     }

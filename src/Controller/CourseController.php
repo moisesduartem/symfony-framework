@@ -18,7 +18,7 @@ class CourseController extends AbstractController
      */
     public function index()
     {
-        $courses = $this->getDoctrine()->getRepository(Course::class);
+        $courses = $this->getDoctrine()->getRepository(Course::class)->findAll();
 
         return $this->json([
             'data' => $courses
@@ -51,7 +51,9 @@ class CourseController extends AbstractController
         $doctrine->persist($course);
         $doctrine->flush();
 
-        return $this->json('Curso criado com sucesso!');
+        return $this->json([
+            'data' => 'Curso criado com sucesso!'
+        ]);
     }
     /**
      * @Route("/{courseId}", name="update", methods={"PUT", "PATCH"})

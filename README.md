@@ -61,11 +61,27 @@ Fora do Controller:
 # Checando rotas existentes 
 >`php bin/console debug:route`
 
-# CRUD - Create
-> `use Symfony\Component\HttpFoundation\Request;`
+# Instalando serializer 
 
-> `public function create(Request $request)`
-> {
-> `$data = $request->$request->all();`
-        `return $this->json($data);`
-> }
+>`composer require serializer   `
+
+# CRUD - Create
+
+    public function create(Request $request)
+    {
+        $data = $request->request->all();
+
+        $course = new Course();
+        $course->setName($data['name']);
+        $course->setDescription($data['description']);
+        $course->setSlug($data['slug']);
+        $course->setCreatedAt(new \DateTime('now', new \DateTimeZone('America/Sao_Paulo')));
+        $course->setUpdatedAt(new \DateTime('now', new \DateTimeZone('America/Sao_Paulo')));
+
+        $doctrine = $this->getDoctrine()->getManager();
+
+        $doctrine->persist($course);
+        $doctrine->flush();
+
+        return $this->json('Curso criado com sucesso!');
+    }

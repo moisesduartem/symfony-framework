@@ -16,3 +16,9 @@ description
 slug
 createdAt
 updatedAt
+
+# Criando banco de dados
+> `$ php bin/console doctrine:database:create`
+
+# Criando migration
+> `$ php bin/console make:migration`

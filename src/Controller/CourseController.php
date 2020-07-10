@@ -30,7 +30,11 @@ class CourseController extends AbstractController
      */
     public function show($courseId)
     {
-
+        $course = $this->getDoctrine()->getRepository(Course::class)->find($courseId);
+        
+        return $this->json([
+            'data' => $course
+        ]);
     }
     /**
      * @Route("/", name="create", methods={"POST"})

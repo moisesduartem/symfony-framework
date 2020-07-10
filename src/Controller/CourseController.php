@@ -13,7 +13,7 @@ use App\Entity\Course;
 class CourseController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index()
     {
@@ -23,4 +23,34 @@ class CourseController extends AbstractController
             'data' => $courses
         ]);
     }
+
+    /**
+     * @Route("/{courseId}", name="show", methods={"GET"})
+     */
+    public function show($courseId) :void
+    {
+
+    }
+    /**
+     * @Route("/", name="create", methods={"POST"})
+     */
+    public function create() :void
+    {
+
+    }
+    /**
+     * @Route("/{courseId}", name="update", methods={"PUT", "PATCH"})
+     */
+    public function update($courseId) :void
+    {
+
+    }
+    /**
+     * @Route("/{courseId}", name="delete", methods={"DELETE})
+     */
+    public function delete($courseId) :void
+    {
+
+    }
+
 }

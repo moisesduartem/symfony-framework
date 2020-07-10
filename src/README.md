@@ -48,3 +48,9 @@ Fora do Controller:
 > `return $this->json([
            'data' => $courses
        ]);`
+
+# Configurando métodos da rota
+`@Route("/", name="index", methods={"GET"})`
+`@Route("/", name="create", methods={"POST"})`
+`@Route("/{courseId}", name="update", methods={"PUT", "PATCH"})`
+`@Route("/{courseId}", name="delete", methods={"DELETE})`

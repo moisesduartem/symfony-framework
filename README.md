@@ -7,6 +7,9 @@
 # Instalando ORM
 > `composer require orm`
 
+# Instalando Serializer
+> `composer require serializer`
+
 # Criando entidade
 > `$ php bin/console make:entity`
 

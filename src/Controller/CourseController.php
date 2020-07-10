@@ -92,7 +92,10 @@ class CourseController extends AbstractController
      * @Route("/{courseId}", name="delete", methods={"DELETE"})
      */
     public function delete($courseId)
-    {
+    {   
+        $doctrine = $this->getDoctrine();
+        $course = $doctrine->getRepository(Course::class)->find($courseId);
+        $manager = $doctrine->getManager();
 
     }
 
